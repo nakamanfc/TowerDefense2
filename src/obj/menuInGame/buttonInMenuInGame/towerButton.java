@@ -6,52 +6,48 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import obj.factory;
 import obj.objInGame;
-import obj.tower.Tower;
-
-import java.util.List;
+import obj.tower.towerType;
 
 public class towerButton extends objInGame {
     private Button button = new Button() ;
-    private int towerType ;
     factory factorys = new factory();
 
-    public towerButton(String link , double x , double y, int towerType, List<Tower> towers)
+    public towerButton(String link , double x , double y, towerType type)
     {
         setImg(new Image(link));
         setX(x);
         setY(y);
-        setTowerType(towerType);
         button.setLayoutX(getX());
         button.setLayoutY(getY());
         button.setGraphic(new ImageView(getImg()));
-        clickToBUtton(towers);
+        clickToBUtton(type);
     }
-
-    public void setTowerType(int towerType) {
-        this.towerType = towerType;
-    }
-
-    public int getTowerType()
+    public void clickToButton(towerType type)
     {
-        return towerType ;
+        button.setOnMouseClicked((new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent event) {
+                factorys.makeTower(type);
+            }
+        }));
     }
-
     public Button getButton() {
         return button;
     }
-    public void clickToBUtton(List<Tower> towers)
+    public void clickToBUtton(towerType type)
     {
-        switch (towerType){
-            case 1:
-                button.setOnMouseClicked((new EventHandler<MouseEvent>() {
-                    public void handle(MouseEvent event) {
-                    }
-                }));
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
+        switch (type){
+            case NORMAL_GUN:
+                clickToButton(type);
+            case SLOW_GUN:
+                clickToButton(type);
+            case MACHINE_GUN:
+                clickToButton(type);
+            case DUAL_GUN:
+                clickToButton(type);
+            case DOUBLE_ROCKET:
+                clickToButton(type);
+            case BIG_ROCKET:
+                clickToButton(type);
         }
     }
 }

@@ -2,11 +2,16 @@ package obj;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import obj.Enemy.enemy;
-import obj.tower.Tower;
+import obj.tower.NormalTower;
+import obj.tower.towerType;
 
 import java.util.List;
+
+import static main.playGame.*;
 
 public class factory {
     create creates = new create() ;
@@ -16,11 +21,21 @@ public class factory {
             enemys.add(creates.createTank()) ;
         }));
 
-        timeline.setCycleCount(20);
+        timeline.setCycleCount(10);
         timeline.play();
     }
-    public void makeTower1(List<Tower>towers,double x , double y)
+    public void makeTower(towerType type)
     {
-        towers.add(creates.createTower1(x,y));
+        scene.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                towers.add(creates.createTower(mouseEvent.getSceneX()-32,mouseEvent.getSceneY()-32,type));
+                scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    public void handle(MouseEvent mouseEvent) {
+
+                    }
+                });
+            }
+        } );
     }
 }
