@@ -33,8 +33,6 @@ public class playGame extends Application {
     factory factorys = new factory();
     List<enemy> enemys = new ArrayList<>();
     NormalEnemy normalEnemy = new NormalEnemy();
-    SlowTower normalTower = new SlowTower(sai_so_toa_do_xy+canh_o_vuong*20,sai_so_toa_do_xy+canh_o_vuong*4);
-    SlowTower normalTower1 = new SlowTower(sai_so_toa_do_xy+canh_o_vuong*21,sai_so_toa_do_xy+canh_o_vuong*4);
     drawMap drawMap = new drawMap();
     menu menu = new menu();
 
@@ -58,16 +56,12 @@ public class playGame extends Application {
         AnimationTimer timer = new AnimationTimer() {
             public void handle(long l) {
                 drawMap.draw(gc);
+                menu.draw(gc);
                 towers.forEach(g -> g.draw(gc));
                 enemys.forEach(g -> g.inGame(gc));
-                normalTower.draw(gc);
-                normalTower1.draw(gc);
             }
         };
         timer.start();
     }
-
-
-    public void upDate(){}
 
 }

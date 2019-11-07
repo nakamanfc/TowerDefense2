@@ -6,7 +6,6 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import obj.Enemy.enemy;
-import obj.tower.NormalTower;
 import obj.tower.towerType;
 
 import java.util.List;
@@ -17,8 +16,8 @@ public class factory {
     create creates = new create() ;
     public void makeTank(List<enemy> enemys )
     {
-        Timeline timeline = new Timeline( new KeyFrame(Duration.millis(1500), event ->{
-            enemys.add(creates.createTank()) ;
+        Timeline timeline = new Timeline( new KeyFrame(Duration.millis(2000), event ->{
+            enemys.add(creates.createEnemy()) ;
         }));
 
         timeline.setCycleCount(10);
@@ -29,7 +28,9 @@ public class factory {
         scene.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent mouseEvent) {
-                towers.add(creates.createTower(mouseEvent.getSceneX()-32,mouseEvent.getSceneY()-32,type));
+                System.out.println(mouseEvent.getSceneX()+" " +mouseEvent.getSceneY());
+                System.out.println((((int)((mouseEvent.getSceneX())/40))*40)+" "+(((int)((mouseEvent.getSceneY())/40))*40));
+                towers.add(creates.createTower(((int)((mouseEvent.getSceneX())/40))*40-12,((int)((mouseEvent.getSceneY())/40))*40-12,type));
                 scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     public void handle(MouseEvent mouseEvent) {
 

@@ -27,6 +27,5 @@ public class menu extends objInGame {
     public void show_menu ()
     {
         playGame.root.getChildren().addAll(tower1.getButton(),tower2.getButton(),tower3.getButton(),tower4.getButton(),tower5.getButton(),tower6.getButton()) ;
-        draw(playGame.gc);
     }
 }
