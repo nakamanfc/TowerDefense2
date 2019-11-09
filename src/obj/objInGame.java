@@ -2,7 +2,7 @@ package obj;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import main.playGame;
-
+import static main.playGame.gc;
 
 public class objInGame {
     public final int sai_so_toa_do_xy = playGame.sai_so_toa_do_xy ;
@@ -12,9 +12,9 @@ public class objInGame {
     private double y ;
     public objInGame(String link , double x , double y)
     {
-        img = new Image(link) ;
-        this.x = x ;
-        this.y = y ;
+        img = new Image(link);
+        this.x = x;
+        this.y = y;
     }
     public objInGame(){}
     public void setImg(Image img)
@@ -41,7 +41,7 @@ public class objInGame {
     {
         return y ;
     }
-    public void draw (GraphicsContext gc)
+    public void draw ()
     {
         gc.drawImage(img ,x ,y);
     }

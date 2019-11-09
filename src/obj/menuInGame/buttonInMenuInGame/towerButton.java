@@ -20,7 +20,7 @@ public class towerButton extends objInGame {
         button.setLayoutX(getX());
         button.setLayoutY(getY());
         button.setGraphic(new ImageView(getImg()));
-        clickToBUtton(type);
+        click(type);
     }
     public void clickToButton(towerType type)
     {
@@ -33,7 +33,7 @@ public class towerButton extends objInGame {
     public Button getButton() {
         return button;
     }
-    public void clickToBUtton(towerType type)
+    public void click(towerType type)
     {
         switch (type){
             case NORMAL_GUN:

@@ -1,10 +1,10 @@
 package obj.Enemy;
 
 import javafx.scene.SnapshotParameters;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import static main.playGame.gc;
 
 public class Tank extends enemy {
     public Image gun ;
@@ -15,7 +15,7 @@ public class Tank extends enemy {
         setY(sai_so_toa_do_xy + canh_o_vuong*2);
         setArmor(50);
         setSpeed(1);
-        setHp(1000);
+        setHp(10);
         directional();
     }
     public void directional()
@@ -32,7 +32,7 @@ public class Tank extends enemy {
         setGun(iv1.snapshot(params, null));
         setLastDirection(getDirection());
     }
-    public void draw (GraphicsContext gc)
+    public void draw ()
     {
         gc.drawImage(getImg(),getX(),getY());
         gc.drawImage(getGun(),getX(),getY());

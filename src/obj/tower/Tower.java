@@ -1,23 +1,22 @@
 package obj.tower;
-
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
+import static main.playGame.gc;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
+import obj.Bullet.bullet;
 import obj.staticObj;
-import javafx.scene.input.MouseDragEvent;
 
 public class Tower extends staticObj {
-    private Image gun ;
-    private towerType type ;
-    private int damage ;
-    private double speed_attack ;
-    private double attack_range ;
+    private Image gun;
+    private towerType type;
+    private int damage;
+    private double speed_attack;
+    private double attack_range;
+    bullet bullet = new bullet();
     public Tower( double x , double y )
     {
         setX(x);
         setY(y);
+        bullet.setGunLocationX(x);
+        bullet.setGunLocationY(y);
     }
     public Tower(){}
     public void setDamage( int damage )
@@ -66,9 +65,21 @@ public class Tower extends staticObj {
         return type;
     }
 
-    public void draw (GraphicsContext gc)
+    public void draw ()
     {
         gc.drawImage(getImg(),getX(),getY());
         gc.drawImage(getGun(),getX(),getY());
+    }
+
+    public void attack()
+    {
+        bullet.bullet_move();
+        bullet.draw();
+        bullet.hitEnemy();
+    }
+    public void inGame()
+    {
+        draw();
+        attack();
     }
 }

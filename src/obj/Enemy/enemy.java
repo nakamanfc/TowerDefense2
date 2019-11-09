@@ -1,10 +1,10 @@
 package obj.Enemy;
 import javafx.scene.SnapshotParameters;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import obj.ObjHaveHp;
 import obj.direction;
+import static main.playGame.enemys;
 
 public class enemy extends ObjHaveHp {
     private int turn_road = 1 ;
@@ -55,11 +55,19 @@ public class enemy extends ObjHaveHp {
         setLastDirection(direction);
     }
 
-    public void inGame ( GraphicsContext gc )
+    public void inGame ()
     {
         navigation();
-        draw(gc);
+        draw();
         move();
+    }
+
+    public void whenAttacked(boolean hitOrMiss , enemy enemy) {
+        if (hitOrMiss){
+            enemy.setHp( enemy.getHp() - 1 );
+        }
+        if (enemy.getHp() <= 0)
+            enemys.remove(enemy);
     }
 
     public void move(){
@@ -258,4 +266,5 @@ public class enemy extends ObjHaveHp {
         }
 
     }
+
 }

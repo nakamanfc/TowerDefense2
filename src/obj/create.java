@@ -6,7 +6,7 @@ import obj.tower.*;
 
 public class create {
     public enemy createEnemy() {
-        BOSS tank = new BOSS();
+        Tank tank = new Tank();
         return tank;
     }
     public Tower createTower(double x, double y , towerType type)
