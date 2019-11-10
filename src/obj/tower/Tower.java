@@ -1,5 +1,5 @@
 package obj.tower;
-import static main.playGame.gc;
+import static main.main.gc;
 import javafx.scene.image.Image;
 import obj.Bullet.bullet;
 import obj.staticObj;

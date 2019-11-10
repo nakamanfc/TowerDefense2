@@ -2,7 +2,7 @@ package obj.menuInGame;
 import javafx.scene.image.Image;
 import obj.menuInGame.buttonInMenuInGame.towerButton;
 import obj.objInGame;
-import main.playGame;
+import main.main;
 import obj.tower.towerType;
 
 public class menu extends objInGame {
@@ -28,6 +28,6 @@ public class menu extends objInGame {
 
     public void show_menu ()
     {
-        playGame.root.getChildren().addAll(tower1.getButton(),tower2.getButton(),tower3.getButton(),tower4.getButton(),tower5.getButton(),tower6.getButton(),play) ;
+        main.root.getChildren().addAll(tower1.getButton(),tower2.getButton(),tower3.getButton(),tower4.getButton(),tower5.getButton(),tower6.getButton(),play) ;
     }
 }

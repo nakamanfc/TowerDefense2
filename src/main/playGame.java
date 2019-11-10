@@ -1,4 +1,5 @@
 package main;
+import javafx.scene.control.Button;
 import obj.Enemy.NormalEnemy;
 import obj.Enemy.enemy;
 import obj.factory;
@@ -8,34 +9,26 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 import obj.menuInGame.menu;
 import obj.tower.Tower;
+import static main.main.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class playGame extends Application {
-
-    public static final int canh_o_vuong = 40;
-    public static final int sai_so_toa_do_xy = -52;
-    public static GraphicsContext gc;
-    public static Canvas canvas;
-    public static Group root;
-    public static Scene scene;
+public class playGame {
     public static List<Tower> towers = new ArrayList<>();
     public static factory factorys = new factory();
     public static List<enemy> enemys = new ArrayList<>();
     drawMap drawMap = new drawMap();
     menu menu = new menu();
-    Stage stage;
 
-    @Override
-    public void start(Stage stage) {
+    public void viewGame(Stage stage) {
         canvas = new Canvas(canh_o_vuong * 26, canh_o_vuong * 15);
         gc = canvas.getGraphicsContext2D();
         root = new Group();
         root.getChildren().addAll(canvas);
+        inGame();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
