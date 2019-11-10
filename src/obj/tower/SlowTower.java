@@ -8,6 +8,6 @@ public class SlowTower extends Tower {
         super(x,y);
         setImg(new Image("file:src//Default size/towerDefense_tile180.png"));
         setGun(new Image("file:src//Default size/towerDefense_tile249.png"));
-        setAttack_range(100);
+        setType(towerType.SLOW_GUN);
     }
 }

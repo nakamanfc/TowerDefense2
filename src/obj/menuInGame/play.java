@@ -9,8 +9,8 @@ public class play extends Button {
     public play()
     {
         setText("PLAY");
-        setLayoutX(10);
-        setLayoutY(10);
+        setLayoutX(920);
+        setLayoutY(400);
         clickToStart();
     }
     public void clickToStart()

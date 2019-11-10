@@ -2,11 +2,13 @@ package obj.Enemy;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import main.main;
 import obj.ObjHaveHp;
 import obj.direction;
 import static main.playGame.enemys;
 
 public class enemy extends ObjHaveHp {
+    public final int sai_so_toa_do_xy = -52 ;
     private int turn_road = 1 ;
     private obj.direction direction ;
     private direction lastDirection ;

@@ -6,13 +6,14 @@ import obj.moveObj;
 import static main.playGame.enemys;
 
 public class bullet extends moveObj {
+    private bulletType type ;
     private double range ;
     private double gunLocationX ;
     private double gunLocationY ;
     public bullet()
     {
-        setImg(new Image("file:src//Default size/towerDefense_tile272.png"));
-        setSpeed(2);
+        setImg(type.getImg());
+        setSpeed(type.getSpeed());
     }
 
     public double getGunLocationX() {

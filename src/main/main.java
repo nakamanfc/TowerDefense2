@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 
 public class main extends Application {
     public static final int canh_o_vuong = 40;
-    public static final int sai_so_toa_do_xy = -52;
     public static GraphicsContext gc;
     public static Canvas canvas;
     public static Group root;

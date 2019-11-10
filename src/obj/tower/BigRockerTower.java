@@ -8,6 +8,6 @@ public class BigRockerTower extends Tower {
         super(x,y);
         setImg(new Image("file:src//Default size/towerDefense_tile183.png"));
         setGun(new Image("file:src//Default size/towerDefense_tile206.png"));
-        setAttack_range(100);
+        setType(towerType.BIG_ROCKET);
     }
 }
