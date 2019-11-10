@@ -1,6 +1,7 @@
 package obj.tower;
 
 import javafx.scene.image.Image;
+import obj.Bullet.dualBullet;
 
 public class DualGunTower extends Tower {
     public DualGunTower(double x , double y)
@@ -8,6 +9,6 @@ public class DualGunTower extends Tower {
         super(x,y);
         setImg(new Image("file:src//Default size/towerDefense_tile181.png"));
         setGun(new Image("file:src//Default size/towerDefense_tile250.png"));
-        setType(towerType.DUAL_GUN);
+        setBullet(new dualBullet(),x,y);
     }
 }

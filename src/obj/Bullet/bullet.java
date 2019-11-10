@@ -1,19 +1,17 @@
 package obj.Bullet;
-
-import javafx.scene.image.Image;
 import obj.Enemy.enemy;
 import obj.moveObj;
 import static main.playGame.enemys;
 
 public class bullet extends moveObj {
-    private bulletType type ;
-    private double range ;
+    private double damage;
+    private double reloadTime;
+    private double range;
     private double gunLocationX ;
     private double gunLocationY ;
     public bullet()
     {
-        setImg(type.getImg());
-        setSpeed(type.getSpeed());
+        setSpeed(2);
     }
 
     public double getGunLocationX() {

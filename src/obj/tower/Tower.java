@@ -6,17 +6,14 @@ import obj.staticObj;
 
 public class Tower extends staticObj {
     private Image gun;
-    private towerType type;
     private int damage;
     private double speed_attack;
     private double attack_range;
-    bullet bullet = new bullet();
+    private bullet bullet = new bullet();
     public Tower( double x , double y )
     {
         setX(x);
         setY(y);
-        bullet.setGunLocationX(x);
-        bullet.setGunLocationY(y);
     }
     public Tower(){}
     public void setDamage( int damage )
@@ -55,14 +52,14 @@ public class Tower extends staticObj {
         this.gun = gun;
     }
 
-    public void setType( towerType type )
-    {
-        this.type = type;
+    public void setBullet(obj.Bullet.bullet bullet , double x , double y) {
+        bullet.setGunLocationX(x);
+        bullet.setGunLocationY(y);
+        this.bullet = bullet;
     }
 
-    public towerType getType()
-    {
-        return type;
+    public obj.Bullet.bullet getBullet() {
+        return bullet;
     }
 
     public void draw ()

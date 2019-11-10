@@ -2,7 +2,6 @@ package obj.Enemy;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import main.main;
 import obj.ObjHaveHp;
 import obj.direction;
 import static main.playGame.enemys;
@@ -10,22 +9,12 @@ import static main.playGame.enemys;
 public class enemy extends ObjHaveHp {
     public final int sai_so_toa_do_xy = -52 ;
     private int turn_road = 1 ;
-    private obj.direction direction ;
+    private direction direction ;
     private direction lastDirection ;
 
     public enemy(){
         direction = obj.direction.LEFT ;
         lastDirection = obj.direction.RIGHT ;
-    }
-
-    public void setTurn_road( int turn_road )
-    {
-        this.turn_road = turn_road ;
-    }
-
-    public int getTurn_road()
-    {
-        return turn_road ;
     }
 
     public void setLastDirection( direction lastDirection )
