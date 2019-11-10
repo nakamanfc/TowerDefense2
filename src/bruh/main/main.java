@@ -42,6 +42,7 @@ public class main extends Application {
         });
 
         canvas = new Canvas(canh_o_vuong * 26, canh_o_vuong * 15);
+        stage.setTitle("Tower Defense");
         gc = canvas.getGraphicsContext2D();
         gc.drawImage(new Image("img/BG.png"),0,0);
         root = new Group();

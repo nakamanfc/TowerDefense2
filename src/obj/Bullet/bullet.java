@@ -11,7 +11,7 @@ public class bullet extends moveObj {
     private double gunLocationY ;
     public bullet()
     {
-        setSpeed(2);
+        setSpeed(5);
     }
 
     public double getGunLocationX() {
