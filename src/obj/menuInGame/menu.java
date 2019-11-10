@@ -2,7 +2,7 @@ package obj.menuInGame;
 import javafx.scene.image.Image;
 import obj.menuInGame.buttonInMenuInGame.towerButton;
 import obj.objInGame;
-import main.main;
+import bruh.main.main;
 import obj.tower.towerType;
 
 public class menu extends objInGame {

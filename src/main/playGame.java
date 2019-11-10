@@ -1,18 +1,15 @@
 package main;
-import javafx.scene.control.Button;
-import obj.Enemy.NormalEnemy;
 import obj.Enemy.enemy;
 import obj.factory;
 import obj.map.drawMap;
 import javafx.animation.AnimationTimer;
-import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 import obj.menuInGame.menu;
 import obj.tower.Tower;
-import static main.main.*;
+import static bruh.main.main.*;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package obj;
 import javafx.scene.image.Image;
-import main.main;
-import static main.main.*;
+import bruh.main.main;
+import static bruh.main.main.*;
 
 public class objInGame {
     public final int sai_so_toa_do_xy = main.sai_so_toa_do_xy ;
