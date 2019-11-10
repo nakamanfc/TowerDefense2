@@ -1,5 +1,4 @@
 package obj.Enemy;
-
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,7 +12,7 @@ public class Tank extends enemy {
         setGun(new Image("file:src/Default size/towerDefense_tile291.png"));
         setX( sai_so_toa_do_xy + canh_o_vuong*21);
         setY(sai_so_toa_do_xy + canh_o_vuong*2);
-        setArmor(50);
+        setArmor(0);
         setSpeed(1);
         setHp(10);
         directional();
