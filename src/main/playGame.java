@@ -9,7 +9,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 import obj.menuInGame.menu;
 import obj.tower.Tower;
-import static main.main.*;
+import static bruh.main.main.*;
 import java.util.ArrayList;
 import java.util.List;
 

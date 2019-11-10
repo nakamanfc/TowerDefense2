@@ -3,7 +3,7 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import static main.main.gc;
+import static bruh.main.main.gc;
 
 public class Tank extends enemy {
     public Image gun ;
