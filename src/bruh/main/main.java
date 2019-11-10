@@ -26,26 +26,25 @@ public class main extends Application {
         button.setLayoutX(50);
         button.setLayoutY(50);
         button.setStyle("-fx-background-image: url('img/Start.png')");
-
-        canvas = new Canvas(canh_o_vuong * 26, canh_o_vuong * 15);
-        gc = canvas.getGraphicsContext2D();
-        gc.drawImage(new Image("img/BG.png"),0,0);
-        root = new Group();
-
         button.setOnMouseClicked(e->{
             playGame playGame = new playGame();
             playGame.viewGame(stage);
         });
+
 
         Button button1 = new Button("Exit");
         button1.setStyle("-fx-background-image: url('img/Exit.png')");
         button1.setPrefSize(200,100);
         button1.setLayoutY(200);
         button1.setLayoutX(50);
+        button1.setOnMouseClicked(e->{
+            stage.close();
+        });
 
-                button1.setOnMouseClicked(e->{
-                    stage.close();
-                });
+        canvas = new Canvas(canh_o_vuong * 26, canh_o_vuong * 15);
+        gc = canvas.getGraphicsContext2D();
+        gc.drawImage(new Image("img/BG.png"),0,0);
+        root = new Group();
         root.getChildren().addAll(canvas,button,button1);
         stage.setResizable(false);
         scene = new Scene(root);
