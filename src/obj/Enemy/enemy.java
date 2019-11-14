@@ -80,6 +80,13 @@ public class enemy extends ObjHaveHp {
         }
     }
 
+    public boolean hom(double x, double y) // hit or miss
+    {
+        if ( Math.sqrt(Math.pow((x - (getX() + 30)),2) + Math.pow((y - (getY() + 32)),2) ) <= 12.5)
+            return true;
+        return false;
+    }
+
     public void navigation()
     {
         switch (turn_road) {

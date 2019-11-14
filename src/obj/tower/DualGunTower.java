@@ -9,6 +9,6 @@ public class DualGunTower extends Tower {
         super(x,y);
         setImg(new Image("file:src//Default size/towerDefense_tile181.png"));
         setGun(new Image("file:src//Default size/towerDefense_tile250.png"));
-        setBullet(new dualBullet(),x,y);
+        setBullet(new dualBullet(1,100,100,2),x,y);
     }
 }

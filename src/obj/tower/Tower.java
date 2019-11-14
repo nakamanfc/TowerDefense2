@@ -1,14 +1,17 @@
 package obj.tower;
 import static bruh.main.main.gc;
+
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import obj.Bullet.bullet;
 import obj.staticObj;
 
+import static bruh.main.main.scene;
+import static main.playGame.towers;
+
 public class Tower extends staticObj {
     private Image gun;
-    private int damage;
-    private double speed_attack;
-    private double attack_range;
     private bullet bullet = new bullet();
     public Tower( double x , double y )
     {
@@ -16,33 +19,6 @@ public class Tower extends staticObj {
         setY(y);
     }
     public Tower(){}
-    public void setDamage( int damage )
-    {
-        this.damage = damage ;
-    }
-    public int getDamage()
-    {
-        return damage ;
-    }
-
-    public void setSpeed_Attack( double speed_attack )
-    {
-        this.speed_attack = speed_attack ;
-    }
-    public double getSpeed_Attack()
-    {
-        return speed_attack ;
-    }
-
-    public void setAttack_range( double attack_range )
-    {
-        this.attack_range = attack_range ;
-    }
-
-    public double getAttack_range()
-    {
-        return attack_range ;
-    }
 
     public Image getGun() {
         return gun;
@@ -62,21 +38,51 @@ public class Tower extends staticObj {
         return bullet;
     }
 
-    public void draw ()
+    public void drawBase()
     {
         gc.drawImage(getImg(),getX(),getY());
+    }
+    public void drawGun()
+    {
         gc.drawImage(getGun(),getX(),getY());
     }
-
+    public void drawBullet()
+    {
+        bullet.draw();
+    }
     public void attack()
     {
-        bullet.bullet_move();
-        bullet.draw();
+        bullet.shoot();
         bullet.hitEnemy();
     }
+
+    @Override
+    public void draw() {
+        drawBase();
+        drawBullet();
+        drawGun();
+    }
+
     public void inGame()
     {
         draw();
         attack();
+    }
+    public void removeTower(Tower tower)
+    {
+        scene.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (((int)((mouseEvent.getSceneX())/40))*40-12 == tower.getX() && ((int)((mouseEvent.getSceneY())/40))*40-12 == tower.getY())
+                {
+                    towers.remove(tower);
+                }
+                scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    public void handle(MouseEvent mouseEvent) {
+
+                    }
+                });
+            }
+        } );
     }
 }

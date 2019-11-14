@@ -1,5 +1,6 @@
 package main;
 import obj.Enemy.enemy;
+import obj.create;
 import obj.factory;
 import obj.map.drawMap;
 import javafx.animation.AnimationTimer;
@@ -15,8 +16,9 @@ import java.util.List;
 
 public class playGame {
     public static List<Tower> towers = new ArrayList<>();
-    public static factory factorys = new factory();
     public static List<enemy> enemys = new ArrayList<>();
+    public static factory factorys = new factory();
+    public static create creates = new create();
     drawMap drawMap = new drawMap();
     menu menu = new menu();
 

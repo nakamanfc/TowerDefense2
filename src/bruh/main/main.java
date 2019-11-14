@@ -1,9 +1,6 @@
 package bruh.main;
 
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
 import main.playGame;
 import javafx.application.Application;
 import javafx.scene.Group;

@@ -9,6 +9,6 @@ public class NormalTower extends Tower {
         super(x,y);
         setImg(new Image("file:src//Default size/towerDefense_tile180.png"));
         setGun(new Image("file:src//Default size/towerDefense_tile226.png"));
-        setBullet(new normalBullet(),x,y);
+        setBullet(new normalBullet(1,100,100,2),x,y);
     }
 }

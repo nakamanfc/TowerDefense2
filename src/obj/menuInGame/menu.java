@@ -8,6 +8,7 @@ import obj.tower.towerType;
 public class menu extends objInGame {
     private int sai_so_toa_do_xy = -58 ;
     play play;
+    sell sell;
     towerButton tower1;
     towerButton tower2;
     towerButton tower3;
@@ -18,6 +19,7 @@ public class menu extends objInGame {
         setImg(new Image("file:src/menuImg/menu.png"));
         setX(canh_o_vuong*21);
         setY(canh_o_vuong*0);
+        sell = new sell();
         play = new play();
         tower1 = new towerButton("file:src/towerImg/normalGun.png",sai_so_toa_do_xy + canh_o_vuong*23,sai_so_toa_do_xy + canh_o_vuong*2, towerType.NORMAL_GUN);
         tower2 = new towerButton("file:src/towerImg/slowGun.png",sai_so_toa_do_xy + canh_o_vuong*25,sai_so_toa_do_xy + canh_o_vuong*2,towerType.SLOW_GUN);
@@ -29,6 +31,6 @@ public class menu extends objInGame {
 
     public void show_menu ()
     {
-        main.root.getChildren().addAll(tower1.getButton(),tower2.getButton(),tower3.getButton(),tower4.getButton(),tower5.getButton(),tower6.getButton(),play) ;
+        main.root.getChildren().addAll(tower1.getButton(),tower2.getButton(),tower3.getButton(),tower4.getButton(),tower5.getButton(),tower6.getButton(),play,sell) ;
     }
 }

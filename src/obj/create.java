@@ -1,7 +1,5 @@
 package obj;
-import obj.Enemy.BOSS;
-import obj.Enemy.Tank;
-import obj.Enemy.enemy;
+import obj.Enemy.*;
 import obj.tower.*;
 
 public class create {
