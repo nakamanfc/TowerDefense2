@@ -24,8 +24,10 @@ public class round {
             factorys.makeEnemy(1500, 5, typeEnemy.ROBOT);
             factorys.makeEnemy(2000, 3, typeEnemy.TANK);
             factorys.makeEnemy(6000, 1, typeEnemy.BOSS);
-            if( enemys.isEmpty() )
-                over.gameOver();
+        }
+        else if (rounds == 7)
+        {
+            over.gameOver();
         }
     }
 }
