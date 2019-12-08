@@ -14,10 +14,18 @@ public class round {
         else if (rounds == 3)
             factorys.makeEnemy(1000, 5, typeEnemy.ROBOT);
         else if (rounds == 4)
-            factorys.makeEnemy(1000, 3, typeEnemy.TANK);
+            factorys.makeEnemy(2000, 3, typeEnemy.TANK);
         else if (rounds == 5)
             factorys.makeEnemy(1000, 1, typeEnemy.BOSS);
         else if (rounds == 6)
-            over.gameOver();
+        {
+            factorys.makeEnemy(1000, 20, typeEnemy.NORMAL);
+            factorys.makeEnemy(800, 10, typeEnemy.SPEED);
+            factorys.makeEnemy(1500, 5, typeEnemy.ROBOT);
+            factorys.makeEnemy(2000, 3, typeEnemy.TANK);
+            factorys.makeEnemy(6000, 1, typeEnemy.BOSS);
+            if( enemys.isEmpty() )
+                over.gameOver();
+        }
     }
 }
