@@ -1,13 +1,21 @@
 package obj.Bullet;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import obj.Enemy.enemy;
 import obj.moveObj;
 
+import static main.playGame.creates;
 import static main.playGame.enemys;
 
 public class bullet extends moveObj {
-    private int n = 0;
-    private double damage;
+    int n = 0;
+    private int damage;
+    private int lastDegree = 0;
     private double reloadTime;
     private double range;
     private double gunLocationX;
@@ -18,7 +26,7 @@ public class bullet extends moveObj {
     private double deltaY;
     private double deltaRange;
 
-    public bullet(double damage , double reloadTime , double range ,double speed)
+    public bullet(int damage , double reloadTime , double range , double speed)
     {
         setDamage(damage);
         setReloadTime(reloadTime);
@@ -27,11 +35,11 @@ public class bullet extends moveObj {
     }
     public bullet(){}
 
-    public void setDamage(double damage) {
+    public void setDamage(int damage) {
         this.damage = damage;
     }
 
-    public double getDamage() {
+    public int getDamage() {
         return damage;
     }
 
@@ -50,7 +58,7 @@ public class bullet extends moveObj {
     public void setGunLocationX( double gunLocationX )
     {
         setX(gunLocationX);
-        this.gunLocationX = gunLocationX ;
+        this.gunLocationX = gunLocationX;
     }
 
     public double getGunLocationY() {
@@ -63,6 +71,22 @@ public class bullet extends moveObj {
         this.gunLocationY = gunLocationY;
     }
 
+    public void setDeltaX(double deltaX) {
+        this.deltaX = deltaX;
+    }
+
+    public double getDeltaX() {
+        return deltaX;
+    }
+
+    public void setDeltaY(double deltaY) {
+        this.deltaY = deltaY;
+    }
+
+    public double getDeltaY() {
+        return deltaY;
+    }
+
     public void setRange(double range) {
         this.range = range;
     }
@@ -73,6 +97,7 @@ public class bullet extends moveObj {
 
     public void resetBullet()
     {
+        n = 0;
         setX(gunLocationX);
         setY(gunLocationY);
     }
@@ -83,11 +108,9 @@ public class bullet extends moveObj {
             if(inSight(enemys.get(i)))
             {
                 aim(enemys.get(i));
-                bullet_move();
                 break;
             }
             else{
-                resetBullet();
                 if ( n != enemys.size() - 1 )
                 {
                     n++;
@@ -100,8 +123,8 @@ public class bullet extends moveObj {
 
     public boolean inSight(enemy enemy)
     {
-        deltaX = enemy.getX()-gunLocationX;
-        deltaY = enemy.getY()-gunLocationY;
+        setDeltaX(enemy.getX()-gunLocationX);
+        setDeltaY(enemy.getY()-gunLocationY);
         deltaRange = Math.sqrt(deltaX*deltaX+deltaY*deltaY);
         if(deltaRange <= getRange())
             return true;
@@ -110,8 +133,8 @@ public class bullet extends moveObj {
 
     public void aim(enemy enemy)
     {
-        deltaX = enemy.getX()-gunLocationX;
-        deltaY = enemy.getY()-gunLocationY;
+        setDeltaX(enemy.getX()-gunLocationX);
+        setDeltaY(enemy.getY()-gunLocationY);
         deltaRange = Math.sqrt(deltaX*deltaX+deltaY*deltaY);
         xSpeed = deltaX*getSpeed()/deltaRange;
         ySpeed = deltaY*getSpeed()/deltaRange;
@@ -119,8 +142,10 @@ public class bullet extends moveObj {
 
     public void bullet_move()
     {
-        if (Math.abs(gunLocationX - getX()) > Math.abs(deltaX) && Math.abs(gunLocationY - getY()) > Math.abs(deltaY))
+        if (Math.sqrt(Math.pow(gunLocationX - getX(),2) + Math.pow(gunLocationY - getY(),2)) > getRange())
         {
+            xSpeed = 0;
+            ySpeed = 0;
             resetBullet();
         }
         setX(getX()+xSpeed);
@@ -128,7 +153,7 @@ public class bullet extends moveObj {
     }
     public void hitEnemy()
     {
-        enemys.forEach(g -> g.whenAttacked(hitOrMiss(g),g));
+        enemys.forEach(g -> g.whenAttacked(hitOrMiss(g),g,g.getTypeEnemy(),getDamage()));
     }
     public boolean hitOrMiss(enemy enemy)
     {
@@ -138,5 +163,44 @@ public class bullet extends moveObj {
         }
         else
             return false;
+    }
+    public void rotateBullet()
+    {
+        if (Math.abs(getDeltaX()) < Math.abs(getDeltaY()) && getDeltaY() < 0)
+        {
+            SnapshotParameters params = new SnapshotParameters();
+            params.setFill(Color.TRANSPARENT);
+            ImageView iv = new ImageView(getImg());
+            iv.setRotate(0-lastDegree);
+            setImg( iv.snapshot(params, null));
+            lastDegree = 0;
+        }
+        else if (Math.abs(getDeltaX()) > Math.abs(getDeltaY()) && getDeltaX() > 0)
+        {
+            SnapshotParameters params = new SnapshotParameters();
+            params.setFill(Color.TRANSPARENT);
+            ImageView iv = new ImageView(getImg());
+            iv.setRotate(90-lastDegree);
+            setImg( iv.snapshot(params, null));
+            lastDegree = 90;
+        }
+        else if (Math.abs(getDeltaX()) < Math.abs(getDeltaY()) && getDeltaY() > 0)
+        {
+            SnapshotParameters params = new SnapshotParameters();
+            params.setFill(Color.TRANSPARENT);
+            ImageView iv = new ImageView(getImg());
+            iv.setRotate(180-lastDegree);
+            setImg( iv.snapshot(params, null));
+            lastDegree = 180;
+        }
+        else if ( Math.abs(getDeltaX()) > Math.abs(getDeltaY()) && getDeltaX() < 0 )
+        {
+            SnapshotParameters params = new SnapshotParameters();
+            params.setFill(Color.TRANSPARENT);
+            ImageView iv = new ImageView(getImg());
+            iv.setRotate(270-lastDegree);
+            setImg( iv.snapshot(params, null));
+            lastDegree = 270;
+        }
     }
 }

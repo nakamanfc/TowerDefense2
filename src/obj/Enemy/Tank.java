@@ -6,16 +6,17 @@ import javafx.scene.paint.Color;
 import obj.direction;
 
 import static bruh.main.main.gc;
-
+import static main.playGame.sai_so_toa_do_xy;
 public class Tank extends enemy {
     public Tank() {
         setImg(new Image("file:src/Default size/towerDefense_tile268.png"));
         setGun(new Image("file:src/Default size/towerDefense_tile291.png"));
         setX( sai_so_toa_do_xy + canh_o_vuong*21);
         setY(sai_so_toa_do_xy + canh_o_vuong*2);
-        setArmor(0);
+        setTypeEnemy(typeEnemy.TANK);
+        setArmor(4);
         setSpeed(1);
-        setHp(100);
+        setHp(200);
         directional();
     }
     public Image gun ;

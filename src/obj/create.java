@@ -3,9 +3,26 @@ import obj.Enemy.*;
 import obj.tower.*;
 
 public class create {
-    public enemy createEnemy() {
-        Tank tank = new Tank();
-        return tank;
+    public enemy createEnemy(typeEnemy type) {
+        switch (type)
+        {
+            case TANK:
+                Tank tank = new Tank();
+                return tank;
+            case ROBOT:
+                RobotEnemy robotEnemy = new RobotEnemy();
+                return robotEnemy;
+            case NORMAL:
+                NormalEnemy normalEnemy = new NormalEnemy();
+                return normalEnemy;
+            case SPEED:
+                SpeedEnemy speedEnemy = new SpeedEnemy();
+                return speedEnemy;
+            case BOSS:
+                BOSS boss = new BOSS();
+                return boss;
+        }
+        return null;
     }
     public Tower createTower(double x, double y , towerType type)
     {

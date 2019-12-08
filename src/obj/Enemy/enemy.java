@@ -1,16 +1,18 @@
 package obj.Enemy;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import obj.ObjHaveHp;
 import obj.direction;
-import static main.playGame.enemys;
+
+import static main.playGame.*;
 
 public class enemy extends ObjHaveHp {
-    public final int sai_so_toa_do_xy = -52 ;
-    private int turn_road = 1 ;
-    private direction direction ;
-    private direction lastDirection ;
+    private int turn_road = 1;
+    private direction direction;
+    private direction lastDirection;
+    private typeEnemy typeEnemy;
 
     public enemy(){
         direction = obj.direction.LEFT ;
@@ -46,6 +48,14 @@ public class enemy extends ObjHaveHp {
         setLastDirection(direction);
     }
 
+    public obj.Enemy.typeEnemy getTypeEnemy() {
+        return typeEnemy;
+    }
+
+    public void setTypeEnemy(obj.Enemy.typeEnemy typeEnemy) {
+        this.typeEnemy = typeEnemy;
+    }
+
     public void inGame ()
     {
         navigation();
@@ -53,12 +63,16 @@ public class enemy extends ObjHaveHp {
         move();
     }
 
-    public void whenAttacked(boolean hitOrMiss , enemy enemy) {
+    public void whenAttacked(boolean hitOrMiss , enemy enemy ,typeEnemy typeEnemy,int damage) {
         if (hitOrMiss){
-            enemy.setHp( enemy.getHp() - 1 );
+            enemy.setHp( enemy.getHp() - damage + enemy.getArmor() );
         }
         if (enemy.getHp() <= 0)
-            enemys.remove(enemy);
+        {
+            scores = scores + typeEnemy.getReward();
+            moneys = moneys + typeEnemy.getReward();
+            destroys.destroyEnemy(enemy);
+        }
     }
 
     public void move(){
@@ -85,6 +99,15 @@ public class enemy extends ObjHaveHp {
         if ( Math.sqrt(Math.pow((x - (getX() + 30)),2) + Math.pow((y - (getY() + 32)),2) ) <= 12.5)
             return true;
         return false;
+    }
+
+    public void finish(enemy enemy )
+    {
+        if ( enemy.getY() >= 15*canh_o_vuong )
+        {
+            hearts = hearts - 1;
+            enemys.remove(enemy);
+        }
     }
 
     public void navigation()

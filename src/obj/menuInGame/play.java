@@ -2,8 +2,9 @@ package obj.menuInGame;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import static main.playGame.factorys;
+import static main.round.round;
 import static main.playGame.enemys;
+import static main.playGame.rounds;
 
 public class play extends Button {
     public play()
@@ -18,7 +19,12 @@ public class play extends Button {
         setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                factorys.makeTank(enemys);
+                if ( enemys.isEmpty() )
+                {
+                    rounds++;
+                    System.out.println(rounds);
+                    round(rounds);
+                }
             }
         });
     }

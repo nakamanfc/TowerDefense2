@@ -16,8 +16,10 @@ public class main extends Application {
     public static Canvas canvas;
     public static Group root;
     public static Scene scene;
+    public static Stage stage1;
     @Override
     public void start(Stage stage) {
+        stage1 = stage;
         Button button = new Button();
         button.setPrefSize(200,100);
         button.setLayoutX(50);
@@ -25,7 +27,7 @@ public class main extends Application {
         button.setStyle("-fx-background-image: url('img/Start.png')");
         button.setOnMouseClicked(e->{
             playGame playGame = new playGame();
-            playGame.viewGame(stage);
+            playGame.viewGame(stage1);
         });
 
 
@@ -35,18 +37,18 @@ public class main extends Application {
         button1.setLayoutY(200);
         button1.setLayoutX(50);
         button1.setOnMouseClicked(e->{
-            stage.close();
+            stage1.close();
         });
 
         canvas = new Canvas(canh_o_vuong * 26, canh_o_vuong * 15);
-        stage.setTitle("Tower Defense");
+        stage1.setTitle("Tower Defense");
         gc = canvas.getGraphicsContext2D();
         gc.drawImage(new Image("img/BG.png"),0,0);
         root = new Group();
         root.getChildren().addAll(canvas,button,button1);
-        stage.setResizable(false);
+        stage1.setResizable(false);
         scene = new Scene(root);
-        stage.setScene(scene);
+        stage1.setScene(scene);
         stage.show();
     }
 }

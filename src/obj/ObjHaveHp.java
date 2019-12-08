@@ -3,7 +3,8 @@ package obj;
 public class ObjHaveHp extends moveObj {
     private int hp ;
     private int armor ;
-    public ObjHaveHp(){}
+    public ObjHaveHp(){
+    }
     public void setHp(int hp)
     {
         this.hp = hp;
